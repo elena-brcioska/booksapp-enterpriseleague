@@ -1,0 +1,14 @@
+.toolbar {
+    padding: 16px;
+    background-color: #CDC2A5;
+    border-radius: 0;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    position: fixed;
+    width: 100%;
+    top: 3.25rem;
+    z-index: 1;
+  }
+  

@@ -1,0 +1,32 @@
+.navbar {
+  position: fixed;
+  z-index: 10;
+  padding: 10px 20px;
+  background-color: #295f98;
+  color: #fff;
+  width: 100%;
+}
+
+.navbar__logo {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .navbar__logo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 12px;
+  }
+
+  .navbar__logo {
+    font-size: 18px;
+  }
+}
