@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Toolbar from "./components/UI/Toolbar/Toolbar";
+import Booklist from "./components/Books/Booklist/Booklist";
+import { SortBy } from "./components/UI/Toolbar/types";
+import QueryProvider from "./providers/QueryProvider/QueryProvider";
+import Navbar from "./components/UI/Navbar/Navbar";
+import MainContent from "./components/Wrappers/MainContent/MainContent";
 
-function App() {
+const App = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortBy, setSortBy] = useState<SortBy>("author");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryProvider>
+      <Navbar />
+      <Toolbar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
+      <MainContent>
+        <Booklist searchQuery={searchQuery} sortBy={sortBy} />
+      </MainContent>
+    </QueryProvider>
   );
-}
+};
 
 export default App;
