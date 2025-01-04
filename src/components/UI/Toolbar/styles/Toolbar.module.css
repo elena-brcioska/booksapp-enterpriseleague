@@ -1,14 +1,77 @@
 .toolbar {
-    padding: 16px;
-    background-color: #CDC2A5;
-    border-radius: 0;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    position: fixed;
-    width: 100%;
-    top: 3.25rem;
-    z-index: 1;
+  padding: 16px;
+  background-color: #cdc2a5;
+  border-radius: 0;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin: auto;
+  position: fixed;
+  width: 100%;
+  top: 3.25rem;
+  z-index: 1;
+}
+
+.toolbar__sort {
+  position: relative;
+  width: 100%;
+  max-width: 10rem;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.65);
+  transition: background-color 0.2s ease, max-width 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.toolbar__sort:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.toolbar__sort:focus {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.toolbar__sort option {
+  background-color: rgba(255, 255, 255, 1);
+  color: #333;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    top: 2.9rem;
   }
-  
+}
+
+@media (min-width: 600px) {
+  .toolbar__sort {
+    max-width: 14rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    top: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .toolbar__sort,
+  .search-bar {
+    width: 100%;
+  }
+}

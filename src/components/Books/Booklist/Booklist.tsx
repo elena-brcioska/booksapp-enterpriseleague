@@ -6,34 +6,19 @@ import Spinner from "../../UI/Spinner/Spinner";
 import { BooklistProps } from "../types";
 
 const Booklist: FC<BooklistProps> = ({ searchQuery, sortBy }) => {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } = useBooks();
-
-  const books = data ? data.pages.flatMap((page) => page.books) : [];
-
-  const filteredBooks = books.filter((book) => {
-    return (
-      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.genre.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  });
-
-  const sortedBooks = filteredBooks.sort((a, b) => {
-    if (sortBy === "author") {
-      return a.author.localeCompare(b.author);
-    }
-    if (sortBy === "title") {
-      return a.title.localeCompare(b.title);
-    }
-    if (sortBy === "genre") {
-      return a.genre.localeCompare(b.genre);
-    }
-    return 0;
-  });
+  const {
+    sortedBooks,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+  } = useBooks(searchQuery, sortBy);
 
   useEffect(() => {
     const handleScroll = () => {
-      const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+      const { scrollTop, clientHeight, scrollHeight } =
+        document.documentElement;
       if (scrollHeight - scrollTop <= clientHeight + 50 && hasNextPage) {
         fetchNextPage();
       }
@@ -45,6 +30,13 @@ const Booklist: FC<BooklistProps> = ({ searchQuery, sortBy }) => {
     };
   }, [fetchNextPage, hasNextPage]);
 
+  const noMoreBooksAvailable =
+    !hasNextPage &&
+    !isFetchingNextPage &&
+    !isLoading &&
+    !isError &&
+    sortedBooks.length !== 0;
+
   return (
     <div className={styles["booklist"]}>
       <header className={styles["booklist__header"]}>
@@ -52,14 +44,20 @@ const Booklist: FC<BooklistProps> = ({ searchQuery, sortBy }) => {
       </header>
       <div className={styles["booklist__content"]}>
         {isLoading && <Spinner />}
-        {isError && <div className={styles["booklist__error"]}>Error fetching books</div>}
-        {sortedBooks.length === 0 && !isLoading && !isError && <div>No books found</div>}
+        {isError && (
+          <div className={styles["booklist__error"]}>Error fetching books</div>
+        )}
+        {sortedBooks.length === 0 && !isLoading && !isError && (
+          <div>No books found</div>
+        )}
         {sortedBooks.map((book) => (
           <BookCard book={book} key={book.id} />
         ))}
         {isFetchingNextPage && <Spinner />}
-        {!hasNextPage && !isFetchingNextPage && !isLoading && !isError && (
-          <div className={styles["booklist__no-more-books"]}>There are no more books available</div>
+        {noMoreBooksAvailable && (
+          <div className={styles["booklist__no-more-books"]}>
+            There are no more books available
+          </div>
         )}
       </div>
     </div>
