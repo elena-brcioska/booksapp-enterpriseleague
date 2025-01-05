@@ -32,6 +32,7 @@ The main features include:
 - **State Management**: React Query (for frontend data fetching and state management)
 - **Data**: Merged data from `books.json` and `books.csv` files
 - **Styling**: BEM methodology for styling and layout
+- **Yarn Workspaces and Concurrently**: For easy startup of the frontend and backend
 
 ## Key Functionalities
 
