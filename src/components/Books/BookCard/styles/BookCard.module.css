@@ -35,32 +35,37 @@
   transform: translateY(-0.3rem);
 }
 
+.highlight {
+  font-weight: bold;
+  color: #295f98;
+}
+
 @media (max-width: 768px) {
   .book-card {
-      width: 45%;
+    width: 45%;
   }
   .book-card__title {
-      font-size: 1.3rem;
+    font-size: 1.3rem;
   }
   .book-card__author {
-      font-size: 1rem;
+    font-size: 1rem;
   }
   .book-card__genre {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 500px) {
   .book-card {
-      width: 90%;
+    width: 90%;
   }
   .book-card__title {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
   .book-card__author {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
   .book-card__genre {
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 }

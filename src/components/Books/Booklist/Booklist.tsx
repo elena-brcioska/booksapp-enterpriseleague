@@ -51,7 +51,7 @@ const Booklist: FC<BooklistProps> = ({ searchQuery, sortBy }) => {
           <div>No books found</div>
         )}
         {sortedBooks.map((book) => (
-          <BookCard book={book} key={book.id} />
+          <BookCard book={book} key={book.id} searchQuery={searchQuery} />
         ))}
         {isFetchingNextPage && <Spinner />}
         {noMoreBooksAvailable && (

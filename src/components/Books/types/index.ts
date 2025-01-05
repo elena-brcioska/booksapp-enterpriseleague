@@ -8,6 +8,7 @@ export interface IBook {
 export interface IBookCard {
   book: IBook;
   key: string;
+  searchQuery: string;
 }
 
 export interface IUseBooks {
