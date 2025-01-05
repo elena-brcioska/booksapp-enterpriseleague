@@ -29,6 +29,7 @@ const BookCard: FC<IBookCard> = ({ book, searchQuery }) => {
       </p>
       <p className={styles["book-card__genre"]}>
         {highlightText(book.genre, searchQuery)}
+        
       </p>
     </div>
   );
