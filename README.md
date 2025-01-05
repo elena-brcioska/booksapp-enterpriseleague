@@ -69,7 +69,7 @@ The main features include:
 
 2. Clone the repository:
     ```bash
-    git clone https://github.com/your-repo/book-list-app.git
+    git clone https://github.com/elena-brcioska/booksapp-enterpriseleague.git
     ```
 3. Navigate to the project directory:
     ```bash
